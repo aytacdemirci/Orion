@@ -1,0 +1,1 @@
+﻿Our application layer communicate with all external dependency like database, external apis, thirs party libraries
