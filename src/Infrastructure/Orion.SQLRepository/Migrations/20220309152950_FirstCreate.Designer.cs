@@ -10,7 +10,7 @@ using Orion.SQLRepository.StoryRepositories;
 namespace Orion.SQLRepository.Migrations
 {
     [DbContext(typeof(StoryDbContext))]
-    [Migration("20220309144926_FirstCreate")]
+    [Migration("20220309152950_FirstCreate")]
     partial class FirstCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

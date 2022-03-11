@@ -25,13 +25,15 @@ namespace Orion.Application.StoryAppLayer.StoryUseCases.CreateStory
             var story = new Story
             {
                 Id = Guid.NewGuid(),
-                Text = request.Text
+                Text = request.Text,
+                Images = request.Images
             };
             var newStory = await _storyRepository.AddAsync(story);
             var storyDto = new StoryDto
             {
                 Id = newStory.Id,
-                Text = newStory.Text
+                Text = newStory.Text,
+                Images = newStory.Images
             };
             return storyDto;
         }

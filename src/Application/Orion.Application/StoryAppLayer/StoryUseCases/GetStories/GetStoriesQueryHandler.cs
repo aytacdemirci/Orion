@@ -22,7 +22,7 @@ namespace Orion.Application.StoryAppLayer.StoryUseCases.GetStories
         {
             var stories = await _storyRepository.GetAsync();
 
-            var storiesDto = stories.Select(x => new StoryDto { Id = x.Id, Text = x.Text });
+            var storiesDto = stories.Select(x => new StoryDto { Id = x.Id, Text = x.Text, Images = x.Images });
 
             return storiesDto;
         }

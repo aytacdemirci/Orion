@@ -23,9 +23,13 @@ namespace Orion.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get([FromRoute]Guid id)
+        public async Task<IActionResult> GetById([FromRoute]Guid id)
         {
             var story = await Mediator.Send(new GetStoryByIdQuery { Id = id });
+            if(story == null)
+            {
+                return ApiErrors.RecordNotFound;
+            }
             return Ok(story);
         }
 

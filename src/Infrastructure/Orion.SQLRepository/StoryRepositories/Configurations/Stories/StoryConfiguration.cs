@@ -13,7 +13,7 @@ namespace Orion.SQLRepository.StoryRepositories.Configurations.Stories
     {
         public void Configure(EntityTypeBuilder<Story> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Story");
         }
     }
 }

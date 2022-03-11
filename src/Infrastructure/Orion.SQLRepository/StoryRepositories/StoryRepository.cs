@@ -33,7 +33,7 @@ namespace Orion.SQLRepository.StoryRepositories
             return await _storyDbContext.Story.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Story> RemoveAssync(Guid id)
+        public async Task<Story> RemoveAsync(Guid id)
         {
             var story = await GetByIdAsync(id);
             _storyDbContext.Story.Remove(story);

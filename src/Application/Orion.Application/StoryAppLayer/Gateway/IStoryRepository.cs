@@ -13,6 +13,6 @@ namespace Orion.Application.StoryAppLayer.Gateway
         Task<Story> GetByIdAsync(Guid id);
         Task<Story> AddAsync(Story story);
         Task<Story> UpdateAsync(Story story);
-        Task<Story> RemoveAssync(Guid id);
+        Task<Story> RemoveAsync(Guid id);
     }
 }

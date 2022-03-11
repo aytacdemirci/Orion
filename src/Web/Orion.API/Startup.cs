@@ -7,8 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Orion.API.CustomMiddlewares;
 using Orion.Application;
+using Orion.CosmosRepository;
 using Orion.SQLRepository;
+using Orion.ThirdPartyServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +32,9 @@ namespace Orion.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
-            services.AddRepository();
+            //services.AddMSSQLRepository(Configuration);
+            services.AddCosmosRepository(Configuration);
+            services.AddThirdPartyServices(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -40,10 +45,7 @@ namespace Orion.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Orion.API v1"));
 

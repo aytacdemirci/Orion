@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Orion.API.Controllers.SeedWork
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class OrionBaseController : ControllerBase
     {
         private IMediator _mediatr;

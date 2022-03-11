@@ -21,8 +21,11 @@ namespace Orion.Application.StoryAppLayer.StoryUseCases.GetStoryById
         public async Task<StoryDto> Handle(GetStoryByIdQuery request, CancellationToken cancellationToken)
         {
             var story = await _storyRepository.GetByIdAsync(request.Id);
-
-            var storyDto = new StoryDto { Id = story.Id, Text = story.Text };
+            if(story == null)
+            {
+                return null;
+            }
+            var storyDto = new StoryDto { Id = story.Id, Text = story.Text, Images=story.Images };
 
             return storyDto;
         }
