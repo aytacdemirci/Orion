@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orion.Application.StoryAppLayer.StoryUseCases.GetStoryById
+namespace Orion.Application.StoryAppLayer.UseCases.StoryUseCases.GetStoryById
 {
     public class GetStoryByIdQuery : IRequest<StoryDto>
     {

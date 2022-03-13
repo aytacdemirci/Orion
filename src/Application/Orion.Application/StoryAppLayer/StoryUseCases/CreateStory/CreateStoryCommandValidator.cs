@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orion.Application.StoryAppLayer.StoryUseCases.CreateStory
+namespace Orion.Application.StoryAppLayer.UseCases.StoryUseCases.CreateStory
 {
-    public class CreateStoryCommandValidator:AbstractValidator<CreateStoryCommand>
+    public class CreateStoryCommandValidator : AbstractValidator<CreateStoryCommand>
     {
         public CreateStoryCommandValidator()
         {
-            RuleFor(x => x.Text).NotNull().NotEmpty();
+            RuleFor(v => v.Text).NotNull().NotEmpty().MaximumLength(300);
         }
     }
 }

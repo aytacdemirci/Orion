@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Orion.API.Controllers.SeedWork;
-using Orion.Application.StoryAppLayer.StoryUseCases.CreateStory;
-using Orion.Application.StoryAppLayer.StoryUseCases.DeleteStory;
-using Orion.Application.StoryAppLayer.StoryUseCases.GetStories;
-using Orion.Application.StoryAppLayer.StoryUseCases.GetStoryById;
-using Orion.Application.StoryAppLayer.StoryUseCases.UpdateStory;
+using Orion.Application.StoryAppLayer.UseCases.StoryUseCases.CreateStory;
+using Orion.Application.StoryAppLayer.UseCases.StoryUseCases.DeleteStory;
+using Orion.Application.StoryAppLayer.UseCases.StoryUseCases.GetStories;
+using Orion.Application.StoryAppLayer.UseCases.StoryUseCases.GetStoryById;
+using Orion.Application.StoryAppLayer.UseCases.StoryUseCases.UpdateStory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

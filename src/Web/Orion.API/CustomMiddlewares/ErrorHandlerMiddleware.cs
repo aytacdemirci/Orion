@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Orion.API.SeedWork.CustomProblemDetails;
 using Orion.Application.SeedWork.CustomExceptions;
+using Orion.Domain.SeedWork;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -32,6 +33,15 @@ namespace Orion.API.CustomMiddlewares
             catch (InvalidRequestException ex)
             {
                 var problemDetails = GetBadRequestProblemDetails(ex);
+
+                var response = context.Response;
+                response.ContentType = "application/json";
+                response.StatusCode = (int)HttpStatusCode.BadRequest;
+                await response.WriteAsync(JsonSerializer.Serialize(problemDetails));
+            }
+            catch (BusinessRuleValidationException ex)
+            {
+                var problemDetails = GetBusinessRuleValidationProblemDetails(ex);
 
                 var response = context.Response;
                 response.ContentType = "application/json";
@@ -84,6 +94,15 @@ namespace Orion.API.CustomMiddlewares
             var invalidRequestProblemDetails = new InvalidRequestProblemDetails(ex, traceId);
 
             return invalidRequestProblemDetails;
+        }
+
+        private BusinessRuleValidationProblemDetails GetBusinessRuleValidationProblemDetails(BusinessRuleValidationException ex)
+        {
+            string traceId = Guid.NewGuid().ToString();
+
+            var businessRuleValidationProblemDetails = new BusinessRuleValidationProblemDetails(ex, traceId);
+
+            return businessRuleValidationProblemDetails;
         }
 
     }

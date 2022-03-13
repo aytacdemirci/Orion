@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orion.Application.StoryAppLayer.StoryUseCases.GetStories
+namespace Orion.Application.StoryAppLayer.UseCases.StoryUseCases.GetStories
 {
-    public class GetStoriesQuery: IRequest<IEnumerable<StoryDto>>
+    public class GetStoriesQuery : IRequest<IEnumerable<StoryDto>>
     {
     }
 }
