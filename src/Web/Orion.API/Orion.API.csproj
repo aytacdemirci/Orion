@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+	 <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+	 <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.4" />
+	  <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.4" />
+	 <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
+	 <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="6.0.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -21,7 +28,12 @@
     <ProjectReference Include="..\..\Infrastructure\Orion.ThirdPartyServices\Orion.ThirdPartyServices.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<InternalsVisibleTo Include="OrionIntegrationTests"/>
+		<InternalsVisibleTo Include="OrionIntegrationTests" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="HealthChecks\Custom.css">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>
