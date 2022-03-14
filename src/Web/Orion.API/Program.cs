@@ -2,14 +2,15 @@ using Microsoft.OpenApi.Models;
 using Orion.API.CustomMiddlewares;
 using Orion.Application;
 using Orion.CosmosRepository;
+using Orion.SQLRepository;
 using Orion.ThirdPartyServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplication();
-//services.AddMSSQLRepository(Configuration);
-builder.Services.AddCosmosRepository(builder.Configuration);
+builder.Services.AddMSSQLRepository(builder.Configuration);
+//builder.Services.AddCosmosRepository(builder.Configuration);
 builder.Services.AddThirdPartyServices(builder.Configuration);
 
 builder.Services.AddControllers();

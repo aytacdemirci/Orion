@@ -14,6 +14,10 @@ namespace Orion.SQLRepository.StoryRepositories.Configurations.Stories
         public void Configure(EntityTypeBuilder<Story> builder)
         {
             builder.ToTable("Story");
+            builder.Property(e => e.Images)
+            .HasConversion(
+                v => string.Join(',', v),
+                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
         }
     }
 }

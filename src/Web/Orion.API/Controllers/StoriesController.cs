@@ -19,6 +19,10 @@ namespace Orion.API.Controllers
         public async Task<IActionResult> Get([FromQuery] GetStoriesQuery query)
         {
             var stories = await Mediator.Send(query);
+            if (story == null)
+            {
+                return ApiErrors.RecordNotFound;
+            }
             return Ok(stories);
         }
 
