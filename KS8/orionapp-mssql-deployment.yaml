@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orionapp-mssql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: orionapp-mssql
+  template:
+    metadata:
+      labels:
+        component: orionapp-mssql
+    spec:
+      volumes:
+        - name: orionapp-mssql-persistent-storage
+          persistentVolumeClaim:
+            claimName: orionapp-database-persistent-volume-claim
+      containers:
+        - name: orionapp-mssql
+          image: mcr.microsoft.com/mssql/server:2017-latest
+          ports:
+            - containerPort: 1433
+          volumeMounts:
+            - name: orionapp-mssql-persistent-storage
+              mountPath: /var/opt/sql
+              subPath: orionapp-mssql
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: SA_PASSWORD

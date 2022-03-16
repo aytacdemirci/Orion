@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orionapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orionapp # which pods to manage
+  template:
+    metadata:
+      labels:
+        app: orionapp
+    spec:
+      containers:
+      - name: orionapp
+        image: aytac3737/orionapp:latest
+        resources:
+          limits:
+            memory: "128Mi" # 1Mi =1024 kikibytes.
+            cpu: "500m" # 0.5 cpu = half CPU
+        ports:
+         - containerPort: 80 #the port inside a container we can reach the rest api
+        env:
+          - name: ConnectionStrings__MSSQL
+            value: "Server=orionapp-mssql-cluster-ip-service,1433;Database=OrionDb;User Id=SA;Password=Password@123;"
+          - name: SA_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: SA_PASSWORD
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development                      
+
+          
+
+
