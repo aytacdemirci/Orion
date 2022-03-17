@@ -17,11 +17,11 @@ spec:
 #apiVersion: v1
 #kind: Service
 #metadata:
-#  name: dotnetapp-service
+#  name: orionapp-service
 #spec:
 #  type: LoadBalancer
 #  selector:
-#    app: dotnetapp
+#    app: orionapp
 #  ports:
 #  - port: 80  #  people can reach into our api from the outside and that has to be mapped into a port in the container
 #    targetPort: 80

@@ -1,5 +1,6 @@
 using HealthChecks.UI.Client;
 using HealthChecks.UI.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Orion.API;
 using Orion.API.CustomMiddlewares;
@@ -7,6 +8,7 @@ using Orion.API.SeedWork.Extensions;
 using Orion.Application;
 using Orion.CosmosRepository;
 using Orion.SQLRepository;
+using Orion.SQLRepository.StoryRepositories;
 using Orion.ThirdPartyServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +30,11 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.ConfigureHealthChecks(builder.Configuration);
 
 var app = builder.Build();
-
+using(var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<StoryDbContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ErrorHandlerMiddleware>(app.Environment);

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: orionapp
-        image: aytac3737/orionapp:latest
+        image: aytac3737/orionapp:v1
         resources:
           limits:
             memory: "128Mi" # 1Mi =1024 kikibytes.
