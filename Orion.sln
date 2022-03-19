@@ -31,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.CosmosRepository", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.ThirdPartyServices", "src\Infrastructure\Orion.ThirdPartyServices\Orion.ThirdPartyServices.csproj", "{21867B3A-218D-4751-AF71-87C2F796D0BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionUnitTests", "test\UnitTest\OrionUnitTests\OrionUnitTests.csproj", "{D0C0214C-8410-4A9E-A5A8-EDB654C6A476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionUnitTests", "test\UnitTest\OrionUnitTests\OrionUnitTests.csproj", "{D0C0214C-8410-4A9E-A5A8-EDB654C6A476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionIntegrationTests", "test\IntegrationTest\OrionIntegrationTests\OrionIntegrationTests.csproj", "{8243FC99-FF5C-4953-B753-0132A3465650}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionIntegrationTests", "test\IntegrationTest\OrionIntegrationTests\OrionIntegrationTests.csproj", "{8243FC99-FF5C-4953-B753-0132A3465650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
